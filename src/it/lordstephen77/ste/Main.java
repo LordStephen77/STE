@@ -2,6 +2,10 @@
 
 package it.lordstephen77.ste;
 
+import java.io.*;
+import java.util.Scanner;
+
+import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -30,7 +34,7 @@ public Main() {
       cp.add(sp);
 
       setContentPane(cp);
-      setTitle("Simple Text Editor");
+      setTitle("Script Text Editor");
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       pack();
       setLocationRelativeTo(null);
@@ -48,5 +52,7 @@ public Main() {
       });
       
    }
-
+   
 }
+
+
