@@ -1,4 +1,8 @@
-
+/*
+ * STE (Script Text Editor)
+ * Copyright (C) 2017 Stefano Peris
+ * This file is distributed under the same license as the Script Text Editor package.
+ */
 
 package it.lordstephen77.ste;
 
