@@ -24,11 +24,14 @@ public class Main extends JFrame implements ActionListener {
     JButton button = new JButton("Show Input Dialog Box");
     JFileChooser fc = new JFileChooser();
 
+    // variables
     private JTextArea ta;
     private int count;
     private JMenuBar menuBar;
     private JMenu fileM;
-    private JMenuItem exitI,saveI,compileI,aboutI;
+    private JMenu editM;
+    private JMenu infoM;
+    private JMenuItem exitI, saveI, aboutI;
     private String pad;
     private JToolBar toolBar;
 
@@ -87,30 +90,33 @@ public class Main extends JFrame implements ActionListener {
 
 		menuBar = new JMenuBar(); // menubar
 		fileM = new JMenu("File"); // file menu
+		editM = new JMenu("Edit"); // edit menu
+		infoM = new JMenu("Info"); // info menu
+		
 		exitI = new JMenuItem("Exit");  // menu items on File Menu
 		saveI = new JMenuItem("Save");  // menu items on File Menu
-		compileI = new JMenuItem("Compile"); //menu items on File Menu
 		aboutI = new JMenuItem("About");
 		toolBar = new JToolBar();
-
+		
 		ta.setLineWrap(true);
 		ta.setWrapStyleWord(true);
 
 		setJMenuBar(menuBar);
 		menuBar.add(fileM); // "File" on the menu bar
-		fileM.add(aboutI); // "About" on the menu bar
-		fileM.add(saveI); // "Save" on the menu item for FILE
-		fileM.add(compileI); // "Complie" on the menu item for FILE
-		fileM.add(exitI); // "Exit" on the menu item for FILE
-
+		fileM.add(saveI); // "Save" on the menu item for File
+		fileM.add(exitI); // "Exit" on the menu item for File
+		
+		//menuBar.add(editM);
+		
+		menuBar.add(infoM);
+		infoM.add(aboutI); // "About" on the menu bar
 
 		saveI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 
-		pane.add(toolBar,BorderLayout.SOUTH);
+		pane.add(toolBar,BorderLayout.NORTH);
 
 		saveI.addActionListener(this);
 		exitI.addActionListener(this);
-		compileI.addActionListener(this);
 		aboutI.addActionListener(this);
 
 		setVisible(true);
@@ -142,10 +148,12 @@ private static void runProcess(String command) throws Exception {
     pro.waitFor();
 }
 
+@Override
 public void actionPerformed(ActionEvent e) {
 	
     JMenuItem choice = (JMenuItem) e.getSource();
 
+    // save file
     if (choice == saveI) {
     	
        int returnVal = fc.showSaveDialog(Main.this);
@@ -163,52 +171,11 @@ public void actionPerformed(ActionEvent e) {
        }    
    }
     
+    // quit program
 	else if (choice == exitI) {
 		
        System.exit(0);
 	}
-    
-	else if (choice == compileI) {
-		
-    	Boolean flg=true;
-
-	    do {
-	    	
-	        String str = JOptionPane.showInputDialog(null, "Enter class name : ", "Text Editor", 1);
-	        if(str != null) {
-	        	
-	            if(str.equals("")) {
-	            	
-	            JOptionPane.showMessageDialog(null,"ENTER VALID NAME","Text Editor",1);      
-	            }
-	            
-	            else {
-	            	
-	             try {
-	                flg=false;
-	                File file = new File(str+".java");
-	                FileWriter fw = new FileWriter(file.getAbsoluteFile());
-	                BufferedWriter bw = new BufferedWriter(fw);
-	                bw.write(textArea.getText());
-	                bw.close(); 
-	                Process pro1 = Runtime.getRuntime().exec("javac "+str+".java");
-	                pro1.waitFor();
-	                runProcess("java "+str);
-	            } catch (Exception es) {
-	            	
-	              es.printStackTrace();
-		          }
-		      }
-		  }
-	        
-		  else {
-			  
-		    flg=false;
-		    break;
-		  }
-
-	  } while(flg==true);
- }
     
  else if(choice == aboutI) {
 	 
