@@ -48,7 +48,7 @@ public class Main extends JFrame implements ActionListener {
         textArea.setAntiAliasingEnabled(isEnabled()); // set antialiasing
         textArea.addMouseWheelListener(null); // set mousewheel zoom
         textArea.convertTabsToSpaces(); // convert tabs to spaces
-        textArea.setTabSize(3);
+        textArea.setTabSize(4);
   		textArea.setCaretPosition(0);
   		textArea.requestFocusInWindow();
   		textArea.setMarkOccurrences(true);
