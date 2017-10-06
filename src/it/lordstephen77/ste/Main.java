@@ -10,15 +10,11 @@ import it.lordstephen77.ste.DefaultTextArea;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
 
 import javax.swing.*;
-import javax.swing.text.StyleContext;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
-import org.fife.ui.rtextarea.RTextAreaEditorKit.InsertTabAction;
 
 public class Main extends JFrame {
 	
