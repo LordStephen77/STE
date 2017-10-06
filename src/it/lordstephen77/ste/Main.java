@@ -220,6 +220,13 @@ public void actionPerformed(ActionEvent e) {
 
 	public static void main(String[] args) {
 		
+		// implements the native system look
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch(Exception e) {
+			
+		}
+		
     	new Main();
 	}
 
