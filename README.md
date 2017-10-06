@@ -1,2 +1,2 @@
-# Script-Text-Editor
-Simple and lightweight text editor for code writing.
+# STE (Script Text Editor)
+## Simple and lightweight text editor for writing code.
