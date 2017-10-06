@@ -7,33 +7,73 @@
 package it.lordstephen77.ste;
 
 import java.io.*;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Scanner;
+
+import com.sun.java.swing.plaf.windows.resources.windows_es;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.BorderLayout;
-import java.awt.Font;
 
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.imageio.ImageIO;
+import javax.swing.text.DefaultEditorKit;
+import javax.swing.text.JTextComponent;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextAreaEditorKit.*;
+import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
+import org.fife.ui.rsyntaxtextarea.ErrorStrip;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextAreaEditorKit;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.Gutter;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 /*
  * @author Stefano Peris © 2017
  */
 	public class Main extends JFrame implements ActionListener {
-
-	   private static final long serialVersionUID = 1L;
+		
+		/*
+		 * Returns whether closing markup tags should be automatically completed.
+		 * This method only returns true if getLanguageIsMarkup() also returns true.
+		 */
+		public boolean getCompleteMarkupCloseTags() {
+			return rootPaneCheckingEnabled;
+		}
+		
+		/*
+		 * Returns whether the current programming language uses curly braces ('{' and '}')
+		 * to denote code blocks.
+		 */
+		public boolean getCurlyBracesDenoteCodeBlocks() {
+			return rootPaneCheckingEnabled;
+		}
+		
+		/*
+		 * Returns whether the current language is a markup language, such as HTML, XML or PHP.
+		 */
+		public boolean getLanguageIsMarkup() {
+			return rootPaneCheckingEnabled;
+		}
+		
+		/*
+		 * This method returns whether auto indentation should be done if Enter is pressed
+		 * at the end of the specified line.
+		 */
+		public boolean getShouldIndentNextLine(int line) {
+			return rootPaneCheckingEnabled;
+		}
+	    
+	private static final long serialVersionUID = 1L;
 	   
 	   private RSyntaxTextArea DefaultTextArea;
 
@@ -86,7 +126,7 @@ import org.fife.ui.rsyntaxtextarea.*;
 	   private JTextField searchField;
 	   private JCheckBox regexCB;
 	   private JCheckBox matchCaseCB;
-
+	   
 	   public Main() {
 
 	      JPanel jpanel = new JPanel(new BorderLayout());
@@ -94,8 +134,10 @@ import org.fife.ui.rsyntaxtextarea.*;
 	      DefaultTextArea = new RSyntaxTextArea(35, 60); // set window resolution
 	      
 	      // Recognition of languages
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE); // Simple text file (.txt)
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_C);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_ASSEMBLER_X86);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CSHARP);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
@@ -103,6 +145,21 @@ import org.fife.ui.rsyntaxtextarea.*;
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_LUA);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PERL);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_GROOVY);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CLOJURE);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_DELPHI);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_DTD);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_HTACCESS);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_LISP);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_MAKEFILE);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SCALA);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SQL);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_UNIX_SHELL);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_WINDOWS_BATCH);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_VISUAL_BASIC);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_SAS);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NSIS);
+	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_BBCODE);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JSP);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_TCL);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_FORTRAN);
@@ -116,22 +173,25 @@ import org.fife.ui.rsyntaxtextarea.*;
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JSON);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_YAML);
 	      DefaultTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_LATEX);
-
+	      
 	      DefaultTextArea.setText(text); // Displays the default text in the editor.
-	      	      
+	      
 	      DefaultTextArea.setCodeFoldingEnabled(true);
 	      DefaultTextArea.setFont(new Font("Mono", Font.BOLD, 14)); // set a default font for the TextArea
 	      RTextScrollPane scrollpane = new RTextScrollPane(DefaultTextArea);
 	      jpanel.add(scrollpane);
-	      
-	      // Create a toolbar with searching options (toolbar draggable).
-	      JToolBar toolBar = new JToolBar();
-	      searchField = new JTextField(30);
-	      toolBar.add(searchField);
+		  
+	      /*
+	       * South position
+	       * Create a toolbar with searching options (toolbar draggable).
+	       */
+	      JToolBar toolBarSouth = new JToolBar();
+	      searchField = new JTextField(20);
+	      toolBarSouth.add(searchField);
 	      final JButton nextButton = new JButton("Find Next");
 	      nextButton.setActionCommand("FindNext");
 	      nextButton.addActionListener(this);
-	      toolBar.add(nextButton);
+	      toolBarSouth.add(nextButton);
 	      searchField.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {
 	            nextButton.doClick(0);
@@ -142,12 +202,12 @@ import org.fife.ui.rsyntaxtextarea.*;
 	      JButton prevButton = new JButton("Find Previous");
 	      prevButton.setActionCommand("FindPrev");
 	      prevButton.addActionListener(this);
-	      toolBar.add(prevButton);
+	      toolBarSouth.add(prevButton);
 	      regexCB = new JCheckBox("Regex");
-	      toolBar.add(regexCB);
+	      toolBarSouth.add(regexCB);
 	      matchCaseCB = new JCheckBox("Match Case");
-	      toolBar.add(matchCaseCB);
-	      jpanel.add(toolBar, BorderLayout.NORTH);
+	      toolBarSouth.add(matchCaseCB);
+	      jpanel.add(toolBarSouth, BorderLayout.SOUTH);
 
 	      setContentPane(jpanel);
 	      setTitle("Script Text Editor");
@@ -181,8 +241,19 @@ import org.fife.ui.rsyntaxtextarea.*;
 	      }
 
 	   }
-
+	   
+	   private HashMap<Object, Action> createActionTable(JTextComponent textComponent) {
+	        HashMap<Object, Action> actions = new HashMap<Object, Action>();
+	        Action[] actionsArray = textComponent.getActions();
+	        for (int i = 0; i < actionsArray.length; i++) {
+	            Action a = actionsArray[i];
+	            actions.put(a.getValue(Action.NAME), a);
+	        }
+	        return actions;
+	    }
+	   
 	   public static void main(String[] args) {
+		   
 	      // Start all Swing applications on the EDT.
 	      SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
@@ -200,4 +271,5 @@ import org.fife.ui.rsyntaxtextarea.*;
 	   }
 	   
 	}
+	
       
