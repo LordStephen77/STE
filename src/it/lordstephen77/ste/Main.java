@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
+import javax.swing.text.StyleContext;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
@@ -32,7 +33,7 @@ public Main() {
        * 
        * C, CPLUSPLUS, CSHARP, PYTHON, LUA, RUBY, DART, FORTRAN, HTML, CSS, JAVASCRIPT, PHP
        * MAKEFILE, UNIX_SHELL, WINDOWS_BATCH, ASSEMBLER_X86, BBCODE, CLOJURE, D, DELPHI, DOCKERFILE, DTD
-       * GROOVY, HOSTS, HTACCESS, INI, JSON, XML YAML, LATEX, LISP, LESS, MXML, NSIS, PROPERTIES_FILE
+       * GROOVY, HOSTS, HTACCESS, INI, JSON, XML, YAML, LATEX, LISP, LESS, MXML, NSIS, PROPERTIES_FILE
        * SCALA, SAS, SQL, TCL, TYPESCRIPT, VISUAL_BASIC, NONE.
        * 
        * Warning: NONE is equivalent to a simple text file (.txt) does not apply any color to the code.
@@ -46,6 +47,14 @@ public Main() {
       textArea.setAntiAliasingEnabled(isEnabled()); // set antialiasing
       textArea.addMouseWheelListener(null); // set mousewheel zoom
       textArea.convertTabsToSpaces(); // convert tabs to spaces
+      textArea.setTabSize(3);
+		textArea.setCaretPosition(0);
+		textArea.requestFocusInWindow();
+		textArea.setMarkOccurrences(true);
+		textArea.setCodeFoldingEnabled(true);
+		textArea.setClearWhitespaceLinesEnabled(false);
+		//textArea.setWhitespaceVisible(true);
+		//textArea.setPaintMatchedBracketPair(true);
       RTextScrollPane rscrollpane = new RTextScrollPane(textArea);
       jpanel.add(rscrollpane);
       
