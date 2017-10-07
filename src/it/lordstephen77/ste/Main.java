@@ -15,6 +15,7 @@ import java.awt.event.*;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
@@ -179,6 +180,17 @@ public class Main extends JFrame implements ActionListener {
     	       }
            }    
        }
+        
+        // open file
+        if (choice == openfileI) {
+        
+        int returnValue = fc.showOpenDialog(null);
+
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = fc.getSelectedFile();
+			System.out.println(selectedFile.getAbsolutePath());
+			}
+        }
         
         // quit program
     	else if (choice == exitI) {
