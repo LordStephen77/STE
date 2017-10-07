@@ -25,20 +25,30 @@ public class WinAbout extends JFrame {
 	        panel.setBackground(new Color(102, 205, 170));
 	        panel.setLayout(null);
 
-	        JLabel title = new JLabel("STE (Script Text Editor)");
-	        title.setBounds(0, 0, 200, 64);
+	        JLabel title = new JLabel("STE");
+	        title.setBounds(0, 0, 265, 64);
 	        title.setFont(new Font("Arial", Font.BOLD, 14));
 	        title.setHorizontalAlignment(SwingConstants.CENTER);
-	        panel.add(title);
+	        panel.add(title, "push, align center");
+	        
+	        JLabel subtitle = new JLabel("(Script Text Editor)");
+	        subtitle.setBounds(0, 20, 265, 64);
+	        subtitle.setFont(new Font("Arial", Font.BOLD, 14));
+	        subtitle.setHorizontalAlignment(SwingConstants.CENTER);
+	        panel.add(subtitle, "push, align center");
 	        
 	        JLabel copyright = new JLabel("By Stefano Peris (c) 2017");
-	        copyright.setBounds(-10, 20, 200, 64);
+	        panel.setBorder(BorderFactory.createTitledBorder(""));
+	        copyright.setBounds(-0, 40, 265, 64);
 	        copyright.setFont(new Font("Arial", Font.BOLD, 11));
 	        copyright.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(copyright);
+	        
 
 	        UIManager.put("OptionPane.minimumSize",new Dimension(600, 290));
 	        JOptionPane.showMessageDialog(null, panel, "About", JOptionPane.PLAIN_MESSAGE, icon);
 	}
 	
 }
+
+
