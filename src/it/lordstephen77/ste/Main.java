@@ -181,16 +181,24 @@ public class Main extends JFrame implements ActionListener {
            }    
        }
         
-        // open file
+        /*
+         * open file (bug?!?)
+         */
         if (choice == openfileI) {
         
-        int returnValue = fc.showOpenDialog(null);
+        int returnVal = fc.showOpenDialog(Main.this);
 
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fc.getSelectedFile();
-			System.out.println(selectedFile.getAbsolutePath());
-			}
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+ 	       try {
+ 	    	   
+ 	           File file = fc.getSelectedFile();
+ 	           writetofile(file);
+ 	       }
+ 	       
+ 	       catch(Exception esa) {
+ 	       }
         }
+     }
         
         // quit program
     	else if (choice == exitI) {
