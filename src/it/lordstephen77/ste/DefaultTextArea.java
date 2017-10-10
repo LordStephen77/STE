@@ -29,7 +29,6 @@
  * 
  */
 
-
 package it.lordstephen77.ste;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -39,7 +38,8 @@ public class DefaultTextArea {
 	public RSyntaxTextArea DefaultTextArea;
 
 	   // Default text in the editor (features, changelog)
-	   public static final String text = "STE (Script Text Editor)\n"
+	   public static final String text = "/*\n" // open multiline comment
+	   		 + "STE (Script Text Editor)\n\n"
 	         + "Copyright (C) 2017 Stefano Peris\n\n"
 	         + "This software is distributed under the GNU 3.0 license\n"
 	         + "A copy of the license is included in the source code.\n"
@@ -92,7 +92,8 @@ public class DefaultTextArea {
 	         + "* Xml\n"
 	         + "* Json\n"
 	         + "* Yaml\n"
-	         + "* Latex\n";
+	         + "* Latex\n"
+	         + "*/"; // closing multiline comment
 }
 
 

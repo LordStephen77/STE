@@ -68,18 +68,28 @@ public class Main extends JFrame implements ActionListener {
 
         super("Script Text Editor");
         setSize(900, 600); // set window resolution
-        setLocationRelativeTo(null); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        
+        /*
+         *  unconditional closure of the forced program.
+         *  corresponds to (System.exit (0))
+         */
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        /*
+         * activating the window closure button has no effect (the x button in the window).
+         */
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         JPanel jpanel = new JPanel(new BorderLayout());
         
-        textArea.setFont(new Font("default", Font.BOLD, 14)); // set a default font for the TextArea
+        textArea.setFont(new Font("default", Font.BOLD, 14)); // set a default font for the TextArea.
         textArea.setCodeFoldingEnabled(true); // set codefolding
-        textArea.setBracketMatchingEnabled(true); // set bracket matching
+        textArea.setBracketMatchingEnabled(true); // set bracket matching.
         textArea.setAutoIndentEnabled(true); // set autoindent
-        textArea.setAntiAliasingEnabled(isEnabled()); // set antialiasing
-        textArea.addMouseWheelListener(null); // set mousewheel zoom
-        textArea.convertTabsToSpaces(); // convert tabs to spaces
+        textArea.setAntiAliasingEnabled(isEnabled()); // set antialiasing.
+        textArea.addMouseWheelListener(null); // set mousewheel zoom.
+        textArea.convertTabsToSpaces(); // convert tabs to spaces.
         textArea.setTabSize(4);
   		textArea.setCaretPosition(0);
   		textArea.requestFocusInWindow();
@@ -107,7 +117,7 @@ public class Main extends JFrame implements ActionListener {
          * 
          * Warning: NONE is equivalent to a simple text file (.txt) does not apply any color to the code.
          */
-        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
+        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCodeFoldingEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
         pane.add(sp);
@@ -115,35 +125,35 @@ public class Main extends JFrame implements ActionListener {
         ta = new JTextArea(); // textarea
 
     	// main menubar
-    	menuBar = new JMenuBar(); // menubar
-    	fileM = new JMenu("File"); // file menu
-    	editM = new JMenu("Edit"); // edit menu
-    	infoM = new JMenu("Info"); // info menu
+    	menuBar = new JMenuBar(); // menubar.
+    	fileM = new JMenu("File"); // file menu.
+    	editM = new JMenu("Edit"); // edit menu.
+    	infoM = new JMenu("Info"); // info menu.
     	
     	// file menu
-    	newfileI = new JMenuItem("New");  // menu items on File Menu
-    	openfileI = new JMenuItem("Open File");  // menu items on File Menu
-    	savefileI = new JMenuItem("Save");  // menu items on File Menu
-    	exitI = new JMenuItem("Exit");  // menu items on File Menu
+    	newfileI = new JMenuItem("New");  // menu items on File Menu.
+    	openfileI = new JMenuItem("Open File");  // menu items on File Menu.
+    	savefileI = new JMenuItem("Save");  // menu items on File Menu.
+    	exitI = new JMenuItem("Exit");  // menu items on File Menu.
     	
     	// info menu
-    	aboutI = new JMenuItem("About"); // menu items on File Menu
+    	aboutI = new JMenuItem("About"); // menu items on File Menu.
     	toolBar = new JToolBar();
     	
     	ta.setLineWrap(true);
     	ta.setWrapStyleWord(true);
 
     	setJMenuBar(menuBar);
-    	menuBar.add(fileM); // "File" on the menu item for File
-    	fileM.add(newfileI); // "New" on the menu item for File
-    	fileM.add(openfileI); // "Open File" on the menu item for File
-    	fileM.add(savefileI); // "Save" on the menu item for File
-    	fileM.add(exitI); // "Exit" on the menu item for File
+    	menuBar.add(fileM); // "File" on the menu item for File.
+    	fileM.add(newfileI); // "New" on the menu item for File.
+    	fileM.add(openfileI); // "Open File" on the menu item for File.
+    	fileM.add(savefileI); // "Save" on the menu item for File.
+    	fileM.add(exitI); // "Exit" on the menu item for File.
     	
-    	menuBar.add(editM); // "Edit" on the menu item for File
+    	menuBar.add(editM); // "Edit" on the menu item for File.
     	
-    	menuBar.add(infoM); // "Info" on the menu item for File
-    	infoM.add(aboutI); // "About" on the menu bar
+    	menuBar.add(infoM); // "Info" on the menu item for File.
+    	infoM.add(aboutI); // "About" on the menu bar.
 
     	// shortcuts
     	newfileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
@@ -232,7 +242,7 @@ public class Main extends JFrame implements ActionListener {
         
 	public static void main(String[] args) {
 		
-		// implements the native system look
+		// implements the native system look.
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch(Exception e) {

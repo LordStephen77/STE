@@ -46,6 +46,7 @@ public class WinAbout extends JFrame {
 			
 			JPanel panel = new JPanel();
 			UIManager.put("OptionPane.minimumSize",new Dimension(600, 290));
+			setSize(600, 290); // set window resolution
 	        panel.setBackground(new Color(227, 132, 170)); // RGB color
 	        panel.setLayout(null);
 
@@ -54,6 +55,7 @@ public class WinAbout extends JFrame {
 	        JLabel title = new JLabel("STE");
 	        title.setBounds(0, 0, 315, 64);
 	        title.setFont(new Font("Arial", Font.BOLD, 18));
+	        title.setForeground(Color.ORANGE);
 	        title.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(title, "push, align center");
 	        
@@ -90,6 +92,7 @@ public class WinAbout extends JFrame {
 	        JLabel link = new JLabel("https://github.com/LordStephen77/STE");
 	        link.setBounds(0, 170, 315, 64);
 	        link.setFont(new Font("Arial", Font.PLAIN, 11));
+	        link.setForeground(Color.BLUE);
 	        link.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(link);
 	        
