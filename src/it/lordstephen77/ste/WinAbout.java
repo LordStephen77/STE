@@ -7,18 +7,11 @@
 package it.lordstephen77.ste;
 
 import java.awt.*;
-import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.io.File;
-import java.io.IOException;
 
 public class WinAbout extends JFrame {
 	

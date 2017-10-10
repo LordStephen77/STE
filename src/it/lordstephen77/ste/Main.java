@@ -15,22 +15,21 @@ import java.awt.event.*;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
-import javax.swing.plaf.FileChooserUI;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
 
 public class Main extends JFrame implements ActionListener {
 	
+	private static final long serialVersionUID = -7305732243149994126L;
+	
 	// variables
     private JTextArea ta;
-    private int count;
     private JMenuBar menuBar;
     private JMenu fileM;
     private JMenu editM;
     private JMenu infoM;
     private JMenuItem newfileI, openfileI, savefileI, exitI, aboutI;
-    private String pad;
     private JToolBar toolBar;
 
     RSyntaxTextArea textArea = new RSyntaxTextArea();
@@ -86,12 +85,8 @@ public class Main extends JFrame implements ActionListener {
         textArea.setCodeFoldingEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
         pane.add(sp);
-
-        // MENUBAR
-        count = 0;
-        pad = " ";
         
-    	ta = new JTextArea(); // textarea
+        ta = new JTextArea(); // textarea
 
     	// main menubar
     	menuBar = new JMenuBar(); // menubar
@@ -163,6 +158,12 @@ public class Main extends JFrame implements ActionListener {
     	
         JMenuItem choice = (JMenuItem) e.getSource();
 
+        // new file
+        if (choice == newfileI) {
+        	
+        	newfileI.addActionListener(this);  // Adding an action listener (so we know when it's been clicked).
+        }
+        
         // save file
         if (choice == savefileI) {
         	
@@ -178,7 +179,7 @@ public class Main extends JFrame implements ActionListener {
     	       catch(Exception esa) {
     	    	   
     	       }
-           }    
+           }
        }
         
         /*
