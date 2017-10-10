@@ -45,54 +45,54 @@ public class WinAbout extends JFrame {
 			ImageIcon icon = new ImageIcon("res/ste_icon.png");
 			
 			JPanel panel = new JPanel();
+			UIManager.put("OptionPane.minimumSize",new Dimension(600, 290));
 	        panel.setBackground(new Color(227, 132, 170)); // RGB color
 	        panel.setLayout(null);
 
 	        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	        
 	        JLabel title = new JLabel("STE");
-	        title.setBounds(0, 0, 270, 64);
+	        title.setBounds(0, 0, 315, 64);
 	        title.setFont(new Font("Arial", Font.BOLD, 18));
 	        title.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(title, "push, align center");
 	        
 	        JLabel subtitle = new JLabel("Script Text Editor");
-	        subtitle.setBounds(0, 20, 270, 64);
+	        subtitle.setBounds(0, 20, 315, 64);
 	        subtitle.setFont(new Font("Arial", Font.PLAIN, 12));
 	        subtitle.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(subtitle, "push, align center");
 	        
 	        JLabel copyright = new JLabel("By Stefano Peris (c) 2017");
-	        copyright.setBounds(0, 40, 270, 64);
+	        copyright.setBounds(0, 40, 315, 64);
 	        copyright.setFont(new Font("Arial", Font.PLAIN, 12));
 	        copyright.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(copyright, "push, align center");
 	        
 	        JLabel note1 = new JLabel("This software is opensource.");
-	        note1.setBounds(0, 80, 270, 64);
+	        note1.setBounds(0, 80, 315, 64);
 	        note1.setFont(new Font("Arial", Font.PLAIN, 11));
 	        note1.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(note1);
 	        
 	        JLabel note2 = new JLabel("Licensed under GPL3.");
-	        note2.setBounds(0, 100, 270, 64);
+	        note2.setBounds(0, 100, 315, 64);
 	        note2.setFont(new Font("Arial", Font.PLAIN, 11));
 	        note2.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(note2);
 	        
 	        JLabel github = new JLabel("♥ Github ♥");
-	        github.setBounds(0, 140, 270, 64);
+	        github.setBounds(0, 140, 315, 64);
 	        github.setFont(new Font("Arial", Font.BOLD, 14));
 	        github.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(github);
 	        
 	        JLabel link = new JLabel("https://github.com/LordStephen77/STE");
-	        link.setBounds(0, 170, 270, 64);
+	        link.setBounds(0, 170, 315, 64);
 	        link.setFont(new Font("Arial", Font.PLAIN, 11));
 	        link.setHorizontalAlignment(SwingConstants.CENTER);
 	        panel.add(link);
 	        
-	        UIManager.put("OptionPane.minimumSize",new Dimension(600, 290));
 	        JOptionPane.showMessageDialog(null, panel, "About", JOptionPane.PLAIN_MESSAGE, icon);
 	}
 	
