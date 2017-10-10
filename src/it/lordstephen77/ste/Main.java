@@ -54,8 +54,9 @@ public class Main extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu fileM;
     private JMenu editM;
+    private JMenu specialM;
     private JMenu infoM;
-    private JMenuItem newfileI, openfileI, savefileI, exitI, aboutI;
+    private JMenuItem newfileI, openfileI, savefileI, select_allI, cutI, copyI, pasteI, dateTimeI, lineI, exitI, aboutI;
     private JToolBar toolBar;
 
     RSyntaxTextArea textArea = new RSyntaxTextArea();
@@ -128,6 +129,7 @@ public class Main extends JFrame implements ActionListener {
     	menuBar = new JMenuBar(); // menubar.
     	fileM = new JMenu("File"); // file menu.
     	editM = new JMenu("Edit"); // edit menu.
+    	specialM = new JMenu("Special"); // special menu functions
     	infoM = new JMenu("Info"); // info menu.
     	
     	// file menu
@@ -136,6 +138,14 @@ public class Main extends JFrame implements ActionListener {
     	savefileI = new JMenuItem("Save");  // menu items on File Menu.
     	exitI = new JMenuItem("Exit");  // menu items on File Menu.
     	
+    	// edit menuselect_allI = new JMenuItem("Select All");  // menu items on File Menu.
+    	cutI = new JMenuItem("Cut");  // menu items on File Menu.
+    	copyI = new JMenuItem("Copy");  // menu items on File Menu.
+    	pasteI = new JMenuItem("Paste");  // menu items on File Menu.
+    	select_allI = new JMenuItem("Select All");  // menu items on File Menu.
+    	dateTimeI = new JMenuItem("Date & Time");  // menu items on File Menu.
+    	lineI = new JMenuItem("Insert line");  // menu items on File Menu.
+    	
     	// info menu
     	aboutI = new JMenuItem("About"); // menu items on File Menu.
     	toolBar = new JToolBar();
@@ -143,30 +153,56 @@ public class Main extends JFrame implements ActionListener {
     	ta.setLineWrap(true);
     	ta.setWrapStyleWord(true);
 
+    	// file menu
     	setJMenuBar(menuBar);
-    	menuBar.add(fileM); // "File" on the menu item for File.
+    	menuBar.add(fileM);
     	fileM.add(newfileI); // "New" on the menu item for File.
     	fileM.add(openfileI); // "Open File" on the menu item for File.
     	fileM.add(savefileI); // "Save" on the menu item for File.
     	fileM.add(exitI); // "Exit" on the menu item for File.
     	
-    	menuBar.add(editM); // "Edit" on the menu item for File.
+    	// edit menu
+    	menuBar.add(editM);
+    	editM.add(cutI); // "Cut" on the menu item for File.
+    	editM.add(copyI); // "Copy" on the menu item for File.
+    	editM.add(pasteI); // "Paste" on the menu item for File.
+    	editM.add(select_allI); // "Select All" on the menu item for File.
     	
+    	// special menu
+    	menuBar.add(specialM);
+    	specialM.add(dateTimeI); // "Date & Time" on the menu item for File.
+    	specialM.add(lineI); // "Insert line" on the menu item for File.
+    	
+    	// info menu
     	menuBar.add(infoM); // "Info" on the menu item for File.
     	infoM.add(aboutI); // "About" on the menu bar.
 
-    	// shortcuts
-    	newfileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-    	openfileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-    	savefileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
-
-    	pane.add(toolBar,BorderLayout.NORTH);
-
+    	// menu parameters
     	newfileI.addActionListener(this);
     	openfileI.addActionListener(this);
     	savefileI.addActionListener(this);
     	exitI.addActionListener(this);
+    	cutI.addActionListener(this);
+    	copyI.addActionListener(this);
+    	pasteI.addActionListener(this);
+    	select_allI.addActionListener(this);
+    	dateTimeI.addActionListener(this);
+    	lineI.addActionListener(this);
     	aboutI.addActionListener(this);
+    	
+    	// file menu
+    	newfileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+    	openfileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+    	savefileI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+    	exitI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+    	
+    	// edit menu
+    	cutI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+    	copyI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+    	pasteI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
+    	select_allI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
+
+    	pane.add(toolBar,BorderLayout.NORTH);
 
     	setVisible(true);
 

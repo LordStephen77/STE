@@ -37,7 +37,9 @@ public class DefaultTextArea {
 
 	public RSyntaxTextArea DefaultTextArea;
 
-	   // Default text in the editor (features, changelog)
+	   /*
+	    * Default text in the editor (features, changelog)
+	    */
 	   public static final String text = "/*\n" // open multiline comment
 	   		 + "STE (Script Text Editor)\n\n"
 	         + "Copyright (C) 2017 Stefano Peris\n\n"
