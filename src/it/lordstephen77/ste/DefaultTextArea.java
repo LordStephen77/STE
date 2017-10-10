@@ -1,8 +1,34 @@
 /*
- * STE (Script Text Editor)
- * Copyright (C) 2017 Stefano Peris
- * This file is distributed under the same license as the Script Text Editor package.
+ * 
+ * .----------------.  .----------------.  .----------------. 
+ * | .--------------. || .--------------. || .--------------. |
+ * | |    _______   | || |  _________   | || |  _________   | |
+ * | |   /  ___  |  | || | |  _   _  |  | || | |_   ___  |  | |
+ * | |  |  (__ \_|  | || | |_/ | | \_|  | || |   | |_  \_|  | |
+ * | |   '.___`-.   | || |     | |      | || |   |  _|  _   | |
+ * | |  |`\____) |  | || |    _| |_     | || |  _| |___/ |  | |
+ * | |  |_______.'  | || |   |_____|    | || | |_________|  | |
+ * | |              | || |              | || |              | |
+ * | '--------------' || '--------------' || '--------------' |
+ *  '----------------'  '----------------'  '----------------' 
+ * 
+ *            +-+-+-+-+-+-+ +-+-+-+-+ +-+-+-+-+ +-+
+ *            |S|c|r|i|p|t| |T|e|x|t| |E|d|i|t|o|r|
+ *            +-+-+-+-+-+-+ +-+-+-+-+ +-+-+-+-+ +-+
+ * 
+ * 
+ * 
+ * @name        LTE
+ * @copyright   Stefano Peris (c) 2017
+ * @author      Stefano Peris
+ * @email       lordstephen77@gmail.com
+ * @github      https://github.com/LordStephen77/LTE
+ * @license     GPL-3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html)
+ * @create      dom 08 ott 2017 17:04:24 CEST
+ * @update      lun 09 ott 2017 11:44:08 CEST
+ * 
  */
+
 
 package it.lordstephen77.ste;
 
