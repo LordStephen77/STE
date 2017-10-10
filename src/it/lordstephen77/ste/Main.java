@@ -116,7 +116,6 @@ public class Main extends JFrame implements ActionListener {
     	
     	menuBar.add(editM); // "Edit" on the menu item for File
     	
-    	
     	menuBar.add(infoM); // "Info" on the menu item for File
     	infoM.add(aboutI); // "About" on the menu bar
 
@@ -143,15 +142,6 @@ public class Main extends JFrame implements ActionListener {
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(textArea.getText());
         bw.close(); 
-    }
-
-    private static void printLines(String name, InputStream ins) throws Exception {
-        String line = null;
-        BufferedReader in = new BufferedReader(
-            new InputStreamReader(ins));
-        while ((line = in.readLine()) != null) {
-            System.out.println(name + " " + line);
-        }
     }
 
     public void actionPerformed(ActionEvent e) {
