@@ -18,11 +18,11 @@
  * 
  * 
  * 
- * @name        LTE
+ * @name        STE
  * @copyright   Stefano Peris (c) 2017
  * @author      Stefano Peris
  * @email       lordstephen77@gmail.com
- * @github      https://github.com/LordStephen77/LTE
+ * @github      https://github.com/LordStephen77/STE
  * @license     GPL-3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html)
  * @create      dom 08 ott 2017 17:04:24 CEST
  * @update      lun 09 ott 2017 11:44:08 CEST
