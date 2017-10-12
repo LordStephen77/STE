@@ -35,6 +35,8 @@ package it.lordstephen77.ste;
 import it.lordstephen77.ste.WinAbout;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
@@ -168,8 +170,8 @@ public class Main extends JFrame implements ActionListener {
     	editM.add(pasteI); // "Paste" on the menu item for File.
     	editM.add(select_allI); // "Select All" on the menu item for File.
     	
-    	// special menu
-    	menuBar.add(specialM);
+    	//Submenu (Special)
+    	editM.add(specialM);
     	specialM.add(dateTimeI); // "Date & Time" on the menu item for File.
     	specialM.add(lineI); // "Insert line" on the menu item for File.
     	
@@ -296,7 +298,8 @@ public class Main extends JFrame implements ActionListener {
         // line
         if (choice == lineI) {
         	
-        	
+        	textArea.replaceSelection("--------------------------------------------------"
+        			+ "------------------------------\n");
         }
         
         // quit program
