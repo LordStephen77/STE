@@ -59,7 +59,7 @@ public class Main extends JFrame implements ActionListener {
     private JMenuItem newfileI, openfileI, savefileI, select_allI, cutI, copyI, pasteI, dateTimeI, lineI, exitI, aboutI;
     private JToolBar toolBar;
 
-    RSyntaxTextArea textArea = new RSyntaxTextArea();
+    static RSyntaxTextArea textArea = new RSyntaxTextArea();
     
     JFrame frame = new JFrame("Input Dialog Box Frame");
     JButton button = new JButton("Show Input Dialog Box");
@@ -118,7 +118,7 @@ public class Main extends JFrame implements ActionListener {
          * 
          * Warning: NONE is equivalent to a simple text file (.txt) does not apply any color to the code.
          */
-        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS);
         textArea.setCodeFoldingEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
         pane.add(sp);
@@ -263,6 +263,24 @@ public class Main extends JFrame implements ActionListener {
         }
      }
         
+        // cut
+        if (choice == cutI) {
+        	
+        	textArea.cut();
+        }
+        
+        // copy
+        if (choice == copyI) {
+        	
+        	textArea.copy();
+        }
+        
+        // paste
+        if (choice == pasteI) {
+        	
+        	textArea.paste();
+        }
+        
         // quit program
     	else if (choice == exitI) {
     		
@@ -275,7 +293,7 @@ public class Main extends JFrame implements ActionListener {
       	 }
 
     }
-        
+
 	public static void main(String[] args) {
 		
 		// implements the native system look.
