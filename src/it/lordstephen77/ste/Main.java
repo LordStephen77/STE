@@ -35,7 +35,7 @@ package it.lordstephen77.ste;
 import it.lordstephen77.ste.WinAbout;
 
 import java.io.*;
-
+import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.BorderLayout;
@@ -200,7 +200,7 @@ public class Main extends JFrame implements ActionListener {
     	cutI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
     	copyI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
     	pasteI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
-    	select_allI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
+    	select_allI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 
     	pane.add(toolBar,BorderLayout.NORTH);
 
@@ -223,11 +223,7 @@ public class Main extends JFrame implements ActionListener {
         // new file
         if (choice == newfileI) {
         	
-        	System.out.println("All text: " + textArea.getText());
-			if (textArea.getSelectedText() != null)
-				System.out.println("Selected text: " + textArea.getSelectedText());
-			else
-				System.out.println("Selected text: ");
+        	textArea.setText("");
         }
         
         // save file
@@ -289,6 +285,18 @@ public class Main extends JFrame implements ActionListener {
         if (choice == select_allI) {
         	
         	textArea.selectAll();
+        }
+        
+        // date & time
+        if (choice == dateTimeI) {
+        	
+        	System.out.println("Time now is " + (new Date()));
+        }
+        
+        // line
+        if (choice == lineI) {
+        	
+        	
         }
         
         // quit program
