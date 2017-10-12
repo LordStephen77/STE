@@ -33,16 +33,17 @@
 package it.lordstephen77.ste;
 
 import it.lordstephen77.ste.WinAbout;
+import sun.awt.SunToolkit.OperationTimedOut;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
 
 import org.fife.ui.rtextarea.*;
 import org.fife.ui.rsyntaxtextarea.*;
@@ -126,7 +127,7 @@ public class Main extends JFrame implements ActionListener {
         pane.add(sp);
         
         ta = new JTextArea(); // textarea
-
+        
     	// main menubar
     	menuBar = new JMenuBar(); // menubar.
     	fileM = new JMenu("File"); // file menu.
@@ -206,6 +207,9 @@ public class Main extends JFrame implements ActionListener {
 
     	pane.add(toolBar,BorderLayout.NORTH);
 
+    	// set border menuBar
+        menuBar.setBorder(BorderFactory.createLineBorder(Color.black));
+    	
     	setVisible(true);
 
     }
@@ -247,23 +251,32 @@ public class Main extends JFrame implements ActionListener {
        }
         
         /*
-         * open file (bug?!?)
+         * open file
          */
         if (choice == openfileI) {
-        
-        int returnVal = fc.showOpenDialog(Main.this);
-
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
- 	       try {
- 	    	   
- 	           File file = fc.getSelectedFile();
- 	           writetofile(file);
- 	       }
- 	       
- 	       catch(Exception esa) {
- 	       }
-        }
-     }
+        	
+        	try {
+        		JFileChooser open = new JFileChooser();
+        		int option = open.showOpenDialog(this);
+        		File f1 = new File(open.getSelectedFile().getPath());
+        		FileReader fr = new FileReader(f1);
+        		BufferedReader br = new BufferedReader(fr);
+        		String s;
+        		
+        		// clear
+        		textArea.setText("");
+        		
+        		while((s=br.readLine())!=null) {
+        			textArea.append(s + "\n");
+        			}
+        		
+        		fr.close();
+        		}
+        	
+        	catch(Exception ae) {
+        		System.out.println(ae);
+        		}
+        	}
         
         // cut
         if (choice == cutI) {
@@ -315,7 +328,7 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		
 		// implements the native system look.
 		try {
