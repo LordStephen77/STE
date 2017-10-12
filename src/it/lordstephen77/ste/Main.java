@@ -223,7 +223,11 @@ public class Main extends JFrame implements ActionListener {
         // new file
         if (choice == newfileI) {
         	
-        	newfileI.addActionListener(this);  // Adding an action listener (so we know when it's been clicked).
+        	System.out.println("All text: " + textArea.getText());
+			if (textArea.getSelectedText() != null)
+				System.out.println("Selected text: " + textArea.getSelectedText());
+			else
+				System.out.println("Selected text: ");
         }
         
         // save file
@@ -279,6 +283,12 @@ public class Main extends JFrame implements ActionListener {
         if (choice == pasteI) {
         	
         	textArea.paste();
+        }
+        
+        // select all
+        if (choice == select_allI) {
+        	
+        	textArea.selectAll();
         }
         
         // quit program
